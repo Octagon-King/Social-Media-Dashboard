@@ -1,0 +1,553 @@
+html {
+  /* Primary */
+  --LimeGreen: hsl(163, 72%, 41%);
+  --BrightRed: hsl(356, 69%, 56%);
+  --Facebook: hsl(208, 92%, 53%);
+  --Twitter: hsl(203, 89%, 53%);
+  --Instagram: linear gradient hsl(37, 97%, 70%) to hsl(329, 70%, 58%);
+  --YouTube: hsl(348, 97%, 39%);
+  /* Dark Theme */
+  --Toggle: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
+  /* Light Theme */
+  --Toggle: hsl(230, 22%, 74%);
+  /* Light Theme */
+  --BG: hsl(0, 0%, 100%);
+  /* BG */
+  --BG-Pattern: hsl(225, 100%, 98%);
+  /* Top BG Pattern */
+  --Card-BG: hsl(227, 47%, 96%);
+  /* Card BG */
+  --Text: hsl(228, 12%, 44%);
+  /* Text */
+  --Head-Text: hsl(230, 17%, 14%);
+  /* Text */
+  font-family: "Inter", sans-serif;
+}
+
+html[data-theme="dark"] {
+  --BG: hsl(230, 17%, 14%);
+  --BG-Pattern: hsl(232, 19%, 15%);
+  --Card-BG: hsl(228, 28%, 20%);
+  --Text: hsl(228, 34%, 66%);
+  --Head-Text: hsl(0, 0%, 100%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  background-color: var(--BG);
+  font-family: "Inter", sans-serif;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  border-radius: 0 0 25px 25px;
+  background-color: var(--BG-Pattern);
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.container {
+  margin: 10px 30px 0 30px;
+}
+
+.container header {
+  /**************** Toggle Button *****************/
+  /**************** Toggle Button *****************/
+}
+
+.container header h2 {
+  font-weight: 700;
+  color: var(--Head-Text);
+  font-size: 1.6rem;
+}
+
+.container header p {
+  margin-top: 3px;
+  color: var(--Text);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.container header .toggle {
+  border-top: solid 1px gray;
+  margin-top: 20px;
+  padding: 15px 0 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container header .toggle input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.container header .toggle label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 25px;
+  background: var(--Toggle);
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.container header .toggle label:after {
+  content: "";
+  position: absolute;
+  top: 1.5px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 90px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container header .toggle input:checked + label {
+  background-image: -webkit-gradient(linear, right top, left top, from(#378fe6), to(#3eda82));
+  background-image: linear-gradient(to left, #378fe6, #3eda82);
+}
+
+.container header .toggle input:checked + label:after {
+  left: calc(100% - 5px);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.container header .toggle label:active:after {
+  width: 40px;
+}
+
+.container .social-follow {
+  margin-top: 40px;
+}
+
+.container .social-follow .card-facebook,
+.container .social-follow .card-twitter,
+.container .social-follow .card-instagram,
+.container .social-follow .card-youtube {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  background-color: var(--Card-BG);
+  height: 220px;
+  margin-bottom: 30px;
+}
+
+.container .social-follow .card-facebook .social-img,
+.container .social-follow .card-twitter .social-img,
+.container .social-follow .card-instagram .social-img,
+.container .social-follow .card-youtube .social-img {
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .social-follow .card-facebook .social-img .username,
+.container .social-follow .card-twitter .social-img .username,
+.container .social-follow .card-instagram .social-img .username,
+.container .social-follow .card-youtube .social-img .username {
+  font-size: 15px;
+  color: var(--Text);
+  font-weight: 700;
+}
+
+.container .social-follow .card-facebook .num-title,
+.container .social-follow .card-twitter .num-title,
+.container .social-follow .card-instagram .num-title,
+.container .social-follow .card-youtube .num-title {
+  color: var(--Head-Text);
+  font-size: 50px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.container .social-follow .card-facebook .followers,
+.container .social-follow .card-twitter .followers,
+.container .social-follow .card-instagram .followers,
+.container .social-follow .card-youtube .followers {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--Text);
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.container .social-follow .card-facebook .stats,
+.container .social-follow .card-twitter .stats,
+.container .social-follow .card-instagram .stats,
+.container .social-follow .card-youtube .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  margin-top: 30px;
+}
+
+.container .social-follow .card-facebook .stats p,
+.container .social-follow .card-twitter .stats p,
+.container .social-follow .card-instagram .stats p,
+.container .social-follow .card-youtube .stats p {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.container .social-follow .card-facebook {
+  border-top: solid 4px var(--Facebook);
+}
+
+.container .social-follow .card-facebook .stats {
+  width: 70px;
+}
+
+.container .social-follow .card-facebook .stats p {
+  color: var(--LimeGreen);
+}
+
+.container .social-follow .card-twitter {
+  border-top: solid 4px var(--Twitter);
+}
+
+.container .social-follow .card-twitter .stats {
+  width: 71px;
+}
+
+.container .social-follow .card-twitter .stats p {
+  color: var(--LimeGreen);
+}
+
+.container .social-follow .card-instagram {
+  border-radius: 5px;
+  border-top: 4px solid red;
+  -o-border-image: linear-gradient(to right, #f3ad2a, #df43df) 1 stretch;
+     border-image: -webkit-gradient(linear, left top, right top, from(#f3ad2a), to(#df43df)) 1 stretch;
+     border-image: linear-gradient(to right, #f3ad2a, #df43df) 1 stretch;
+}
+
+.container .social-follow .card-instagram .social-img {
+  width: 130px;
+}
+
+.container .social-follow .card-instagram .stats {
+  width: 87px;
+}
+
+.container .social-follow .card-instagram .stats p {
+  color: var(--LimeGreen);
+}
+
+.container .social-follow .card-youtube {
+  border-top: solid 4px var(--YouTube);
+}
+
+.container .social-follow .card-youtube .stats {
+  width: 78px;
+}
+
+.container .social-follow .card-youtube .stats p {
+  color: var(--BrightRed);
+}
+
+.container .overview-title {
+  color: var(--Text);
+  font-size: 25px;
+  margin: 50px 0 30px 0;
+}
+
+.container .overview .card-fac-1,
+.container .overview .card-fac-2,
+.container .overview .card-inst-1,
+.container .overview .card-inst-2,
+.container .overview .card-twitt-1,
+.container .overview .card-twitt-2,
+.container .overview .card-yout-1,
+.container .overview .card-yout-2 {
+  background-color: var(--Card-BG);
+  border-radius: 5px;
+  margin: 0 0 20px 0;
+  height: 130px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.container .overview .card-fac-1 .views-logo,
+.container .overview .card-fac-2 .views-logo,
+.container .overview .card-inst-1 .views-logo,
+.container .overview .card-inst-2 .views-logo,
+.container .overview .card-twitt-1 .views-logo,
+.container .overview .card-twitt-2 .views-logo,
+.container .overview .card-yout-1 .views-logo,
+.container .overview .card-yout-2 .views-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.container .overview .card-fac-1 .views-logo p,
+.container .overview .card-fac-2 .views-logo p,
+.container .overview .card-inst-1 .views-logo p,
+.container .overview .card-inst-2 .views-logo p,
+.container .overview .card-twitt-1 .views-logo p,
+.container .overview .card-twitt-2 .views-logo p,
+.container .overview .card-yout-1 .views-logo p,
+.container .overview .card-yout-2 .views-logo p {
+  color: var(--Text);
+  font-weight: 700;
+}
+
+.container .overview .card-fac-1 .views-logo h3,
+.container .overview .card-fac-2 .views-logo h3,
+.container .overview .card-inst-1 .views-logo h3,
+.container .overview .card-inst-2 .views-logo h3,
+.container .overview .card-twitt-1 .views-logo h3,
+.container .overview .card-twitt-2 .views-logo h3,
+.container .overview .card-yout-1 .views-logo h3,
+.container .overview .card-yout-2 .views-logo h3 {
+  font-size: 30px;
+  color: var(--Head-Text);
+}
+
+.container .overview .card-fac-1 .overview-stats,
+.container .overview .card-fac-2 .overview-stats,
+.container .overview .card-inst-1 .overview-stats,
+.container .overview .card-inst-2 .overview-stats,
+.container .overview .card-twitt-1 .overview-stats,
+.container .overview .card-twitt-2 .overview-stats,
+.container .overview .card-yout-1 .overview-stats,
+.container .overview .card-yout-2 .overview-stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.container .overview .card-fac-1 .overview-stats .percentage,
+.container .overview .card-fac-2 .overview-stats .percentage,
+.container .overview .card-inst-1 .overview-stats .percentage,
+.container .overview .card-inst-2 .overview-stats .percentage,
+.container .overview .card-twitt-1 .overview-stats .percentage,
+.container .overview .card-twitt-2 .overview-stats .percentage,
+.container .overview .card-yout-1 .overview-stats .percentage,
+.container .overview .card-yout-2 .overview-stats .percentage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .overview .card-fac-1 .overview-stats .percentage p,
+.container .overview .card-fac-2 .overview-stats .percentage p,
+.container .overview .card-inst-1 .overview-stats .percentage p,
+.container .overview .card-inst-2 .overview-stats .percentage p,
+.container .overview .card-twitt-1 .overview-stats .percentage p,
+.container .overview .card-twitt-2 .overview-stats .percentage p,
+.container .overview .card-yout-1 .overview-stats .percentage p,
+.container .overview .card-yout-2 .overview-stats .percentage p {
+  font-weight: 700;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+.container .overview .card-fac-1 .views-logo {
+  margin: 0 100px 0 0;
+}
+
+.container .overview .card-fac-1 .overview-stats .percentage p {
+  color: var(--LimeGreen);
+}
+
+.container .overview .card-fac-2 .views-logo {
+  margin: 0 150px 0 0;
+}
+
+.container .overview .card-fac-2 .overview-stats .percentage p {
+  color: var(--BrightRed);
+}
+
+.container .overview .card-inst-1 .views-logo {
+  margin: 0 110px 0 0;
+}
+
+.container .overview .card-inst-1 .overview-stats .percentage p {
+  color: var(--LimeGreen);
+}
+
+.container .overview .card-inst-2 .views-logo {
+  margin: 0 90px 0 0;
+}
+
+.container .overview .card-inst-2 .overview-stats .percentage p {
+  color: var(--LimeGreen);
+}
+
+.container .overview .card-twitt-1 .views-logo {
+  margin: 0 120px 0 0;
+}
+
+.container .overview .card-twitt-1 .overview-stats .percentage p {
+  color: var(--LimeGreen);
+}
+
+.container .overview .card-twitt-2 .views-logo {
+  margin: 0 130px 0 0;
+}
+
+.container .overview .card-twitt-2 .overview-stats .percentage p {
+  color: var(--LimeGreen);
+}
+
+.container .overview .card-yout-1 .views-logo {
+  margin: 0 145px 0 0;
+}
+
+.container .overview .card-yout-1 .overview-stats .percentage p {
+  color: var(--BrightRed);
+}
+
+.container .overview .card-yout-2 .views-logo {
+  margin: 0 105px 0 0;
+}
+
+.container .overview .card-yout-2 .overview-stats .percentage p {
+  color: var(--BrightRed);
+}
+
+@media (min-width: 560px) {
+  .container .overview {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (1fr)[4];
+        grid-template-rows: repeat(4, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (min-width: 690px) {
+  .container header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .container header .toggle {
+    border-top: none;
+    width: 140px;
+  }
+  .container .social-follow {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (1fr)[2];
+        grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (min-width: 977px) {
+  .container .overview {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: (1fr)[3];
+        grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1236px) {
+  .container .social-follow {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+  }
+  .container .overview {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    -ms-grid-rows: (1fr)[2];
+        grid-template-rows: repeat(2, 1fr);
+  }
+}
+/*# sourceMappingURL=style.css.map */
