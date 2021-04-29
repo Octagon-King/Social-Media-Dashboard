@@ -13,27 +13,25 @@ html {
 
   --Toggle: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
 
-  /* Light Theme */
+  /* Dark Theme */
 
-  --Toggle: hsl(230, 22%, 74%);
-
-  /* Light Theme */
-
-  --BG: hsl(0, 0%, 100%); /* BG */
-  --BG-Pattern: hsl(225, 100%, 98%); /* Top BG Pattern */
-  --Card-BG: hsl(227, 47%, 96%); /* Card BG */
-  --Text: hsl(228, 12%, 44%); /* Text */
-  --Head-Text: hsl(230, 17%, 14%); /* Text */
-
-  font-family: "Inter", sans-serif;
-}
-
-html[data-theme="dark"] {
   --BG: hsl(230, 17%, 14%);
   --BG-Pattern: hsl(232, 19%, 15%);
   --Card-BG: hsl(228, 28%, 20%);
   --Text: hsl(228, 34%, 66%);
   --Head-Text: hsl(0, 0%, 100%);
+  --hover: hsl(229, 28%, 26%);
+
+  font-family: "Inter", sans-serif;
+}
+
+html[data-theme="light"] {
+  --BG: hsl(0, 0%, 100%); /* BG */
+  --BG-Pattern: hsl(225, 100%, 98%); /* Top BG Pattern */
+  --Card-BG: hsl(227, 47%, 96%); /* Card BG */
+  --Text: hsl(228, 12%, 44%); /* Text */
+  --Head-Text: hsl(230, 17%, 14%); /* Text */
+  --hover: hsl(225, 12%, 87%);
 }
 
 * {
@@ -106,7 +104,11 @@ body {
         text-indent: -9999px;
         width: 50px;
         height: 25px;
-        background: var(--Toggle);
+        background-image: linear-gradient(
+          to left,
+          hsl(210, 78%, 56%),
+          hsl(146, 68%, 55%)
+        );
         display: block;
         border-radius: 100px;
         position: relative;
@@ -125,11 +127,7 @@ body {
       }
 
       input:checked + label {
-        background-image: linear-gradient(
-          to left,
-          hsl(210, 78%, 56%),
-          hsl(146, 68%, 55%)
-        );
+        background: var(--Toggle);
       }
 
       input:checked + label:after {
@@ -159,6 +157,10 @@ body {
       background-color: var(--Card-BG);
       height: 220px;
       margin-bottom: 30px;
+
+      &:hover {
+        background: var(--hover);
+      }
 
       .social-img {
         width: 100px;
@@ -267,158 +269,60 @@ body {
     margin: 50px 0 30px 0;
   }
 
+  /* OVERVIEW */
   .overview {
-    .card-fac-1,
-    .card-fac-2,
-    .card-inst-1,
-    .card-inst-2,
-    .card-twitt-1,
-    .card-twitt-2,
-    .card-yout-1,
-    .card-yout-2 {
+    .overview-card {
+      margin-top: 30px;
       background-color: var(--Card-BG);
       border-radius: 5px;
-      margin: 0 0 20px 0;
-      height: 130px;
-      display: flex;
-      justify-content: space-around;
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      grid-template-rows: repeat(2, min-content);
+      justify-content: space-between;
+      grid-row-gap: 2.25rem;
+      padding: 2.25rem 2.25rem 2.25rem 2.25rem;
 
-      .views-logo {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-start;
-
-        p {
-          color: var(--Text);
-          font-weight: 700;
-        }
-        h3 {
-          font-size: 30px;
-          color: var(--Head-Text);
-        }
+      .overview-card-title {
+        font-weight: 700;
+        color: var(--Text);
       }
+      .overview-card-icon {
+        justify-self: end;
+      }
+      .overview-card-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--Head-Text);
+      }
+      .overview-card-percentage {
+        justify-self: start;
+        font-weight: 700;
+        font-size: 0.813rem;
+        margin-top: 16px;
 
-      .overview-stats {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-end;
+        &--positive {
+          color: var(--LimeGreen);
 
-        .percentage {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          p {
-            font-weight: 700;
-            font-size: 13px;
-            margin-left: 5px;
+          &::before {
+            position: relative;
+            content: url(/images/icon-up.svg);
+            top: -2px;
+            left: -4px;
+          }
+        }
+        &--negative {
+          color: var(--BrightRed);
+
+          &::before {
+            position: relative;
+            content: url(/images/icon-down.svg);
+            top: -2px;
+            left: -4px;
           }
         }
       }
-    }
-
-    .card-fac-1 {
-      .views-logo {
-        margin: 0 100px 0 0;
-      }
-      .overview-stats {
-        .percentage {
-          p {
-            color: var(--LimeGreen);
-          }
-        }
-      }
-    }
-
-    .card-fac-2 {
-      .views-logo {
-        margin: 0 150px 0 0;
-      }
-      .overview-stats {
-        .percentage {
-          p {
-            color: var(--BrightRed);
-          }
-        }
-      }
-    }
-
-    .card-inst-1 {
-      .views-logo {
-        margin: 0 110px 0 0;
-      }
-      .overview-stats {
-        .percentage {
-          p {
-            color: var(--LimeGreen);
-          }
-        }
-      }
-    }
-
-    .card-inst-2 {
-      .views-logo {
-        margin: 0 90px 0 0;
-      }
-      .overview-stats {
-        .percentage {
-          p {
-            color: var(--LimeGreen);
-          }
-        }
-      }
-    }
-
-    .card-twitt-1 {
-      .views-logo {
-        margin: 0 120px 0 0;
-      }
-      .overview-stats {
-        .percentage {
-          p {
-            color: var(--LimeGreen);
-          }
-        }
-      }
-    }
-
-    .card-twitt-2 {
-      .views-logo {
-        margin: 0 130px 0 0;
-      }
-      .overview-stats {
-        .percentage {
-          p {
-            color: var(--LimeGreen);
-          }
-        }
-      }
-    }
-
-    .card-yout-1 {
-      .views-logo {
-        margin: 0 145px 0 0;
-      }
-      .overview-stats {
-        .percentage {
-          p {
-            color: var(--BrightRed);
-          }
-        }
-      }
-    }
-
-    .card-yout-2 {
-      .views-logo {
-        margin: 0 105px 0 0;
-      }
-      .overview-stats {
-        .percentage {
-          p {
-            color: var(--BrightRed);
-          }
-        }
+      &:hover {
+        background: var(--hover);
       }
     }
   }
@@ -431,6 +335,9 @@ body {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, 1fr);
       gap: 30px;
+      .overview-card {
+        margin-top: 0;
+      }
     }
   }
 }
@@ -456,7 +363,7 @@ body {
   }
 }
 
-@media (min-width: 977px) {
+@media (min-width: 836px) {
   .container {
     .overview {
       grid-template-columns: repeat(3, 1fr);
@@ -465,7 +372,7 @@ body {
   }
 }
 
-@media (min-width: 1236px) {
+@media (min-width: 1121px) {
   .container {
     .social-follow {
       grid-template-columns: repeat(4, 1fr);
